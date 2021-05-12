@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "poppins", sans-serif;
+  background-color: #fff;
+  color: #fff;
+}
+
+h1{
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.section1,
+.section2,
+.section3,
+.section4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.section1 i,
+.section2 i,
+.section3 i,
+.section4 i {
+  font-size: 120px;
+  margin-bottom: 20px;
+}
+
+.section1{
+  background-color: #1da1f2;
+}
+.section2{
+  background-color: #3b5998;
+}
+.section3{
+  background-color: #bb0000;
+}
+.section4{
+  background-color: #e224b3;
+}
+
+#back-to-top-btn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 26px;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  border-radius: 20%;
+  border: 1px solid #FFF;
+}
+
+#back-to-top-btn i{
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+/** Animation **/
+.btnEntrance{
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-name: btnEntrance;
+}
+
+.btnExit{
+  animation-duration: 0.25s;
+  animation-fill-mode: both;
+  animation-name: btnExit;
+}
+
+/* Fade In Up*/
+@keyframes btnEntrance{
+  from{
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Fade Out Down*/
+@keyframes btnExit{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}

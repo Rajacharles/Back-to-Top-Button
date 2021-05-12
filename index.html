@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back to Top Button</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1c2c2462bf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <button id="back-to-top-btn">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="container">
+      <div class="section1">
+        <i class="fa fa-twitter"></i>
+        <h1>Back to Top Button</h1>
+        <h1>Scroll Down to display the button</h1>
+      </div>
+      <div class="section2">
+        <i class="fab fa-facebook-f"></i>
+      </div>
+      <div class="section3">
+        <i class="fab fa-youtube"></i>
+      </div>
+      <div class="section4">
+        <i class="fab fa-instagram"></i>
+      </div>
+    </div>
+
+    <script>
+      const backToTopButton = document.querySelector("#back-to-top-btn");
+      window.addEventListener("scroll", scrollFunction);
+
+      function scrollFunction() {
+        if (window.pageYOffset > 300) { //Show backToTopButton
+          if(!backToTopButton.classList.contains("btnEntrance")) {
+            backToTopButton.classList.remove("btnExit");
+            backToTopButton.classList.add("btnEntrance");
+            backToTopButton.style.display = "block";
+          }
+        }
+        else { // Hide backToTopButton
+          if(backToTopButton.classList.contains("btnEntrance")) {
+            backToTopButton.classList.remove("btnEntrance");
+            backToTopButton.classList.add("btnExit");
+            setTimeout(function() {
+              backToTopButton.style.display = "none";
+            }, 250);
+          }
+        }
+      }
+
+      backToTopButton.addEventListener("click", smoothScrollBackToTop);
+      
+      function smoothScrollBackToTop() {
+        const targetPosition = 0;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 750;
+        let start = null;
+
+        window.requestAnimationFrame(step);
+
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const progress = timestamp - start;
+          window.scrollTo(0, easeInOutCubic(
+            progress,
+            startPosition,
+            distance,
+            duration
+          ));
+          if (progress < duration) window.requestAnimationFrame(step);
+        }
+      }
+
+      function easeInOutCubic(t, b, c, d) {
+        t /= d/2;
+        if (t < 1) return c/2*t*t*t +b;
+        t -= 2;
+        return c/2*(t*t*t + 2) + b;
+      };
+
+    </script>
+
+
+</body>
+</html>
